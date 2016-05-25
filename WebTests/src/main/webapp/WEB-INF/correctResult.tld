@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<taglib version="2.1"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>cr</short-name>
+    <uri>http://webtests/correctResult</uri>
+
+    <function>
+        <name>correctResult</name>
+        <function-class>helperClasses.Function</function-class>
+        <function-signature>boolean correctResult(java.sql.Timestamp,java.sql.Timestamp) </function-signature>
+    </function>
+
+</taglib>

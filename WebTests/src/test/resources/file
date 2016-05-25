@@ -1,0 +1,29 @@
+CREATE TABLE Person (
+  id         INT PRIMARY KEY AUTO_INCREMENT,
+  first_name VARCHAR(255) NOT NULL,
+  last_name  VARCHAR(255) NOT NULL ,
+  permission BOOLEAN         DEFAULT FALSE,
+  email      VARCHAR(255) NOT NULL UNIQUE,
+  password   VARCHAR(255) NOT NULL,
+  address    VARCHAR(255)
+);
+CREATE TABLE Test (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  creator_id INT NOT NULL,
+  title VARCHAR(255) NOT NULL ,
+  latest_update DATETIME NOT NULL ,
+  questions TEXT NOT NULL ,
+
+  FOREIGN KEY (creator_id) REFERENCES Person(id)
+);
+CREATE TABLE Test_Results (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  student_id INT NOT NULL,
+  test_id INT NOT NULL,
+  answers TEXT NOT NULL ,
+  test_date DATETIME NOT NULL ,
+  mark INT NOT NULL ,
+  FOREIGN KEY (student_id) REFERENCES Person(id),
+  FOREIGN KEY (test_id) REFERENCES Test(id)
+);
+
