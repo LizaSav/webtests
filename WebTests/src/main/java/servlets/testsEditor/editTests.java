@@ -19,13 +19,15 @@ import java.util.Locale;
 
 import static helperClasses.Function.get;
 
-/**
- * Created by Elizaveta on 22.05.2016.
+/** Интерфейс для изменения теста
+ *
  */
 public class editTests extends HttpServlet {
     @Resource(name = "jdbc/ProdDB")
     private DataSource dataSource;
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         model.Test test =new Test();
         try {
             Connection con=(Connection) request.getSession(true).getAttribute("connection");
@@ -47,9 +49,8 @@ public class editTests extends HttpServlet {
         map.put(test.getId(),test);
         request.getSession().setAttribute("editTestMap",map);
 
-        Locale locale = (Locale) request.getSession().getAttribute("language");
+        Locale locale = new Locale(request.getSession().getAttribute("language").toString());
 
-        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><head>");

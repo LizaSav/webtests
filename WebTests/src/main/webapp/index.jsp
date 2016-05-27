@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="language"
        value="${not empty param.language ? param.language
@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="${language}">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <style>
       ul.hr {
         margin: 0; /* Обнуляем значение отступов */
@@ -39,7 +39,7 @@
     <li><a href="/tests/subjects.jsp">${tests}</a></li>
     <c:choose>
       <c:when test="${empty sessionScope.isLogged }">
-        <li><a href="login.jsp">${login}</a></li>
+        <li><a href="/login.jsp">${login}</a></li>
       </c:when>
       <c:otherwise>
         <c:if test="${sessionScope.creator==true}">

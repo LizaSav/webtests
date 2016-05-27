@@ -19,6 +19,8 @@ dependencies {
     compile 'org.apache.tomcat:tomcat-api:+'
     compile 'org.apache.tomcat:tomcat-jsp-api:+'
     compile 'mysql:mysql-connector-java:5.1.+'
+    compile 'log4j:log4j:1.2.17'
 
+    testCompile 'junit:junit:4.11'
     compile 'org.projectlombok:lombok:+'
 }

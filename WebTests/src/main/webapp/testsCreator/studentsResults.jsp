@@ -10,31 +10,43 @@
        scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle  basename="localizator.locale" />
+<%@ taglib prefix="cr" uri="http://webtests/correctResult"%>
 <%@ include file="/index.jsp" %>
-<sql:query var="listTests" dataSource="jdbc/ProdDB">
-    select title, id FROM Test WHERE subject='<%=request.getParameter("subject")%>';
+<sql:query var="listResults" dataSource="jdbc/ProdDB">
+    select first_name, last_name, mark FROM test_result, person WHERE test_id=<%=Integer.parseInt((String)request.getAttribute("testId"))%> AND student_id=person.id;
 </sql:query>
 <html lang="${language}">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <fmt:message  key="testslistsubj" var="testslistsubj"/>
-    <fmt:message  key="testtitle" var="testtitle"/>
-    <title>${testslistsubj}</title>
+    <fmt:message key="studentsresult" var="studentsresult"/>
+    <fmt:message  key="mark" var="mark"/>
+    <fmt:message  key="name" var="name"/>
+    <fmt:message  key="lastname" var="lastname"/>
+
+    <title>${studentsresult}</title>
 </head>
 <body>
-
 <table border="1" cellpadding="5">
-    <caption><h2>${testslistsubj} <%=request.getParameter("subject")%></h2></caption>
+    <caption><h2>${studentsresult}</h2></caption>
     <tr>
-        <th>${testtitle}</th>
+        <th>${name}</th>
+        <th>${lastname}</th>
+        <th>${mark}</th>
     </tr>
-   <c:forEach var="test" items="${listTests.rows}">
+    <c:forEach var="result" items="${listResults.rows}">
         <tr>
             <td>
-                <a href="/Test?id=<c:out value="${test.id}" />"><c:out value="${test.title}" /></a>
+                    ${result.first_name}
+            </td>
+            <td>
+                    ${result.last_name}
+            </td>
+            <td>
+                    ${result.mark}
             </td>
         </tr>
     </c:forEach>
 </table>
 </body>
 </html>
+

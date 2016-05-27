@@ -5,8 +5,8 @@ import javax.servlet.http.HttpSessionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- * Created by Elizaveta on 23.05.2016.
+/** Закрытие подключения к базе данных, после окончания сессии
+ *
  */
 public class connectionClose implements HttpSessionListener {
 

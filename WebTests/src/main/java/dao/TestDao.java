@@ -64,6 +64,7 @@ public class TestDao {
             questions.append("---");
         }
         questions.delete(questions.length() - 3, questions.length());
+        String sub = test.getSubject().toString();
         try (Statement st = con.createStatement()) {
             st.executeUpdate("INSERT INTO test (creator_id, title, latest_update, questions, subject) VALUES (" + test.getCreatorId() + ", '" + test.getTitle() +
                     "', '" + ts.toString() + "', '" + questions + "', '" + test.getSubject().toString() + "')");

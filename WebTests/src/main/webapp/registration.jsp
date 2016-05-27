@@ -12,6 +12,7 @@
 <%@ include file="/index.jsp" %>
 <html lang="${language}">
 <head >
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <fmt:message key="name" var="name"/>
     <fmt:message  key="adress" var="adress"/>
     <fmt:message  key="password" var="pas"/>

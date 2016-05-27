@@ -2,6 +2,10 @@ package filters;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+
+/** Проверка того, что поьзователь залогинен
+ *
+ */
 public class SystemAccessFilter implements Filter {
     private FilterConfig filterConfig;
     public void setFilterConfig(FilterConfig fc) {
@@ -12,6 +16,8 @@ public class SystemAccessFilter implements Filter {
     }
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         if (filterConfig == null){
             return;
         }

@@ -12,6 +12,7 @@
 <%@ include file="/index.jsp" %>
 <html lang="${language}">
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <fmt:message key="choose" var="choose"/>
     <fmt:message key="GEOGRAPHY" var="GEOGRAPHY"/>
     <fmt:message key="ALGEBRA" var="ALGEBRA"/>
@@ -26,14 +27,14 @@
 </head>
 <body>
 
-<a href="/tests/testslist/index.jsp?subject=geography">${GEOGRAPHY}</a>
-<a href="/tests/testslist/index.jsp?subject=ALGEBRA">${ALGEBRA}</a>
-<a href="/tests/testslist/index.jsp?subject=ENGLISH">${ENGLISH}</a>
-<a href="/tests/testslist/index.jsp?subject=COMPUTER_SCIENCE">${COMPUTER_SCIENCE}</a>
-<a href="/tests/testslist/index.jsp?subject=RUSSIAN">${RUSSIAN}</a>
-<a href="/tests/testslist/index.jsp?subject=LITERATURE">${LITERATURE}</a>
-<a href="/tests/testslist/index.jsp?subject=GEOMETRY">${GEOMETRY}</a>
-<a href="/tests/testslist/index.jsp?subject=OTHER">${OTHER}</a>
+<a href="/tests/testslist/index.jsp?subject=geography">${GEOGRAPHY}</a><br/>
+<a href="/tests/testslist/index.jsp?subject=ALGEBRA">${ALGEBRA}</a><br/>
+<a href="/tests/testslist/index.jsp?subject=ENGLISH">${ENGLISH}</a><br/>
+<a href="/tests/testslist/index.jsp?subject=COMPUTER_SCIENCE">${COMPUTER_SCIENCE}</a><br/>
+<a href="/tests/testslist/index.jsp?subject=RUSSIAN">${RUSSIAN}</a><br/>
+<a href="/tests/testslist/index.jsp?subject=LITERATURE">${LITERATURE}</a><br/>
+<a href="/tests/testslist/index.jsp?subject=GEOMETRY">${GEOMETRY}</a><br/>
+<a href="/tests/testslist/index.jsp?subject=OTHER">${OTHER}</a><br/>
 
 </body>
 </html>

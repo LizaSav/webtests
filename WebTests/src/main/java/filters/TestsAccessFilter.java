@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- * Created by Elizaveta on 24.05.2016.
+/** Проверка того, что пользователь ещё не проходил выбранный тест
+ *
  */
 public class TestsAccessFilter implements Filter {
     @Resource(name = "jdbc/ProdDB")
@@ -27,6 +27,8 @@ public class TestsAccessFilter implements Filter {
     }
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         if (filterConfig == null) {
             return;
         }

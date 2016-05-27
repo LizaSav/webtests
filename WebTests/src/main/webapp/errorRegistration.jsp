@@ -12,6 +12,7 @@
 <%@ include file="/index.jsp" %>
 <html lang="${language}">
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <fmt:message key="errorreg" var="errorreg"/>
     <fmt:message  key="mes" var="mes"/>
     <title>${errorreg}</title>

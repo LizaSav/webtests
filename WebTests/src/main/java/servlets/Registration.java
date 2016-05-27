@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class Registration extends Dispatcher {
-    public String getServletInfo(){
-        return "Registration servlet";
-    }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         ServletContext ctx = getServletContext();
         if (request.getParameter("login")!=null){
             this.forward("/CheckUser", request, response);

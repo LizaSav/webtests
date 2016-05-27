@@ -18,13 +18,13 @@
 
 <html lang="${language}">
 <head>
-
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <fmt:message  key="testslist" var="testslist"/>
     <fmt:message  key="testtitle" var="testtitle"/>
     <fmt:message  key="edit" var="edit"/>
     <fmt:message  key="delete" var="delete"/>
     <fmt:message  key="createtest" var="createtest"/>
-
+    <fmt:message  key="studentsresult" var="studentsresult"/>
     <title>${testslist}</title>
 </head>
 <body>
@@ -44,6 +44,9 @@
         </td>
         <td>
             <input type="submit" name="delete${mytest.id}" value="${delete}">
+        </td>
+        <td>
+            <input type="submit" name="studentsresult${mytest.id}" value="${studentsresult}">
         </td>
     </tr>
     </c:forEach>

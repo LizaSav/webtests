@@ -14,11 +14,13 @@ import java.util.Locale;
 
 import static helperClasses.Function.get;
 
-/**
- * Created by Elizaveta on 23.05.2016.
+/** Интерфейс для именения вопроса в тесте
+ *
  */
 public class editQuestion extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         int numberOfAnswers=0;
         try {
             numberOfAnswers = (int) request.getAttribute("numberOfAnswers");
@@ -27,10 +29,9 @@ public class editQuestion extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request,response); //страница которыя получает только сколько ответов в вопросе
         }
         if (numberOfAnswers>0) {
-            Locale locale = (Locale) request.getSession().getAttribute("language");
+            Locale locale = new Locale(request.getSession().getAttribute("language").toString());
 
             Test test = ((HashMap<Integer,Test>)request.getSession().getAttribute("editTestMap")).get(request.getAttribute("testId"));
-            response.setCharacterEncoding("UTF-8");
             response.setContentType("text/html");
             Question q= test.getQuestions().get((int)request.getAttribute("questionNumber"));
             response.setContentType("text/html; UTF-8");

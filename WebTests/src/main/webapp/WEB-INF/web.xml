@@ -16,6 +16,15 @@
     </resource-ref>
 
     <servlet>
+        <servlet-name>Log4JInitServlet</servlet-name>
+        <servlet-class>servlets.Log4JInitServlet</servlet-class>
+        <init-param>
+            <param-name>log4j-properties-location</param-name>
+            <param-value>WEB-INF/log4j.properties</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
         <servlet-name>Dispatcher</servlet-name>
         <servlet-class>servlets.Dispatcher</servlet-class>
     </servlet>

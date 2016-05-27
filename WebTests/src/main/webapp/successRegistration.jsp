@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="language"
        value="${not empty param.language ? param.language
                                          : not empty language ? language
@@ -10,6 +11,7 @@
 <%@ include file="/index.jsp" %>
 <html lang="${language}">
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <fmt:message key="user" var="user"/>
     <fmt:message key="adress" var="adress"/>
     <fmt:message  key="enter" var="enter"/>

@@ -6,8 +6,8 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-/**
- * Created by Elizaveta on 20.05.2016.
+/** Проверка того, есть ли у пользователя право создавать тесты
+ *
  */
 public class CreatorTestsFilter implements Filter {
     private FilterConfig filterConfig;
@@ -19,6 +19,8 @@ public class CreatorTestsFilter implements Filter {
     }
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         if (filterConfig == null){
             return;
         }

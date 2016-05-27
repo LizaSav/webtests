@@ -4,10 +4,14 @@ import java.sql.Timestamp;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-/**
- * Created by Elizaveta on 23.05.2016.
- */
+
 public class Function {
+    /** Проверка актуальности пройденного теста
+     *
+     * @param pass дата сдачи теста
+     * @param update дата последнего обновления теста создателем
+     * @return был ли изменён тест с моменда его прохождения
+     */
     public static boolean correctResult(Timestamp pass, Timestamp update){
         if (pass.before(update)) return false;
         else return  true;

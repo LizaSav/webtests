@@ -10,11 +10,13 @@ import java.util.Locale;
 
 import static helperClasses.Function.get;
 
-/**
- * Created by Elizaveta on 22.05.2016.
+/** Редактирование имеющегося вопроса
+ *
  */
 public class addQuestion extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         int numberOfAnswers=0;
         try {
             numberOfAnswers =Integer.parseInt((String)request.getAttribute("numberOfAnswers"));
@@ -23,8 +25,7 @@ public class addQuestion extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request,response); //страница которыя получает только сколько ответов в вопросе
         }
         if (numberOfAnswers>0) {
-            Locale locale = (Locale) request.getSession().getAttribute("language");
-            response.setCharacterEncoding("UTF-8");
+            Locale locale = new Locale(request.getSession().getAttribute("language").toString());
             response.setContentType("text/html; UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<html><head>");

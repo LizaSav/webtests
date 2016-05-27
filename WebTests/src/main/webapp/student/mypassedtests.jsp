@@ -13,10 +13,11 @@
 <%@ taglib prefix="cr" uri="http://webtests/correctResult"%>
 <%@ include file="/index.jsp" %>
 <sql:query var="listMyTests" dataSource="jdbc/ProdDB">
-    select title, answers, latest_update, test.id, test_date, mark FROM test_result, test WHERE student_id=<%=((model.Person)session.getAttribute("user")).getId()%>;
+    select title, answers, latest_update, test.id, test_date, mark FROM test_result, test WHERE student_id=<%=((model.Person)session.getAttribute("user")).getId()%> AND test_id=test.id;
 </sql:query>
 <html lang="${language}">
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <fmt:message key="pastests" var="pastests"/>
     <fmt:message  key="testtitle" var="testtitle"/>
     <fmt:message  key="mark" var="mark"/>

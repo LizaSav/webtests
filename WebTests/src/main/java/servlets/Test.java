@@ -1,6 +1,8 @@
 package servlets;
 
+import model.Person;
 import model.Question;
+import org.apache.log4j.Logger;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -19,12 +21,15 @@ import java.util.Locale;
 
 import static helperClasses.Function.get;
 
-/**
- * Created by Elizaveta on 21.05.2016.
+/** Генерирует выбранный тест для прохождения пользователем
+ *
+ * После нажатия кнопки submit ответы передаются на проверку в {@link servlets.passTests.TestChecking}
  */
 public class Test extends HttpServlet {
     @Resource(name = "jdbc/ProdDB")
     private DataSource dataSource;
+
+    private static final Logger log= Logger.getLogger(Test.class);
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection con=(Connection) request.getSession(true).getAttribute("connection");
@@ -47,10 +52,13 @@ public class Test extends HttpServlet {
             request.getSession().setAttribute("currentTests", map);
         }
 
+        log.info("User with id="+((Person)request.getSession().getAttribute("user")).getId()+"has been started passing the test with id="+test.getId());
+
         if (test!=null) {
             Locale locale =(Locale) request.getSession().getAttribute("language");
+            request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
 
-            response.setCharacterEncoding("UTF-8");
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<html><head>");

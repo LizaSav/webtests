@@ -2,6 +2,7 @@ package servlets.testsEditor;
 
 import dao.TestDao;
 import model.Test;
+import org.apache.log4j.Logger;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -14,15 +15,23 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-/**
- * Created by Elizaveta on 22.05.2016.
+/**Определяет как нужно редактировать тест
+ *
+ * удалить вопрос -происходит здесь
+ * добавить вопрос -{@link addQuestion}
+ * изменить имеющийся вопрос -{@Link editQuestion}
  */
 public class EditTestController extends HttpServlet {
+    private static final Logger log= Logger.getLogger(EditTestController.class);
+
     @Resource(name = "jdbc/ProdDB")
     private DataSource dataSource;
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         Test test =((HashMap<Integer, Test>)request.getSession().getAttribute("editTestMap")).get(Integer.parseInt(request.getParameter("testId")));
         if(request.getParameter("updateTitle")!=null){
+            if (test==null) request.getRequestDispatcher("/testsCreator/mytests.jsp").forward(request,response);
         test.setTitle(request.getParameter("title"));
         ((HashMap<Integer, Test>)request.getSession().getAttribute("editTestMap")).remove(test.getId());
         try {
@@ -32,8 +41,9 @@ public class EditTestController extends HttpServlet {
                 request.getSession().setAttribute("connection", con);
             }
             TestDao.editTitle(con, test);
+            log.info("Title in test with id="+test.getId()+"has been changed");
         } catch (SQLException e) {
-            //логирование ошибка подключения
+            log.error("Can not edit title in test with id="+test.getId(), e);
         }
         request.getRequestDispatcher("/testsCreator/mytests.jsp").forward(request, response);
         }
