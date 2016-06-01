@@ -21,4 +21,5 @@ public class Function {
         rb=ResourceBundle.getBundle("localizator/locale",locale);
         return rb.getString(key);
     }
+
 }

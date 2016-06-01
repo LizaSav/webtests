@@ -13,7 +13,7 @@
 <%@ include file="/index.jsp" %>
 
 <sql:query var="listMyTests" dataSource="jdbc/ProdDB">
-    select title, id FROM Test WHERE creator_id=<%=((model.Person)session.getAttribute("user")).getId()%>;
+    select title, subject, id FROM Test WHERE creator_id=<%=((model.Person)session.getAttribute("user")).getId()%>;
 </sql:query>
 
 <html lang="${language}">
@@ -25,17 +25,30 @@
     <fmt:message  key="delete" var="delete"/>
     <fmt:message  key="createtest" var="createtest"/>
     <fmt:message  key="studentsresult" var="studentsresult"/>
+    <fmt:message key="GEOGRAPHY" var="GEOGRAPHY"/>
+    <fmt:message key="ALGEBRA" var="ALGEBRA"/>
+    <fmt:message key="ENGLISH" var="ENGLISH"/>
+    <fmt:message key="COMPUTER_SCIENCE" var="COMPUTER_SCIENCE"/>
+    <fmt:message key="RUSSIAN" var="RUSSIAN"/>
+    <fmt:message key="LITERATURE" var="LITERATURE"/>
+    <fmt:message key="GEOMETRY" var="GEOMETRY"/>
+    <fmt:message key="OTHER" var="OTHER"/>
     <title>${testslist}</title>
 </head>
 <body>
 <table border="1" cellpadding="5">
     <caption><h2>${testslist}</h2></caption>
     <tr>
+        <th/>
         <th>${testtitle}</th>
     </tr>
     <form action="/testsCreator/MyTestsController" method="post">
     <c:forEach var="mytest" items="${listMyTests.rows}">
     <tr>
+        <td>
+            <c:set var="subj" value="${mytest.subject}"></c:set>
+            ${subj}
+        </td>
         <td>
             ${mytest.title}
         </td>
