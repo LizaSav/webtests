@@ -64,6 +64,7 @@ public class TestChecking extends HttpServlet {
                 con =dataSource.getConnection();
                 request.getSession().setAttribute("connection", con);
             }
+            String string=request.getParameter("testDate");
             TestResultDao.addResult(con, ((Person)request.getSession().getAttribute("user")).getId(), test.getId(), myAnswer.toString(), request.getParameter("testDate"),mark);
         } catch (SQLException e) {
             log.error("Can not add test result. User id="+((Person)request.getSession().getAttribute("user")).getId()+" test id="+test.getId(), e);

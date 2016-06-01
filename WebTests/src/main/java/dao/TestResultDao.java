@@ -17,7 +17,7 @@ public class TestResultDao {
         }
     }
     public static boolean isPassed(Connection con, int studentId, int testId){
-        try (ResultSet rs = con.createStatement().executeQuery("SELECT  latest_update, test_date  FROM test_result, test WHERE student_id=" + studentId+" AND test.id="+testId)) {
+        try (ResultSet rs = con.createStatement().executeQuery("SELECT  latest_update, test_date  FROM test_result, test WHERE student_id=" + studentId+" AND test.id="+testId+" AND test_result.test_id="+testId)) {
             if (rs.next()) {
                 Timestamp update=rs.getTimestamp("latest_update");
                 Timestamp testDate=rs.getTimestamp("test_date");

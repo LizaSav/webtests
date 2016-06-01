@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  */
 public class DataChecking {
     public static boolean checkOneWord(String s){
-        String regexp="[\\w|@|\\-|\\.]+";
+        String regexp="[\\w|[А-Я]|[а-я]@|\\-|\\.|_]{0,64}+";
         Pattern pattern = Pattern.compile(regexp);
         Matcher matcher = pattern.matcher(s);
         return matcher.matches();

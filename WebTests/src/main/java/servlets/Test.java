@@ -55,7 +55,7 @@ public class Test extends HttpServlet {
         log.info("User with id="+((Person)request.getSession().getAttribute("user")).getId()+"has been started passing the test with id="+test.getId());
 
         if (test!=null) {
-            Locale locale =(Locale) request.getSession().getAttribute("language");
+            Locale locale = new Locale(request.getSession().getAttribute("language").toString());
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
 
